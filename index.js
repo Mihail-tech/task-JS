@@ -1,6 +1,6 @@
 //1
 
-const { resolve } = require("node:path");
+
 
 // a) use map for array
 const arr = [1, 2, 3, 5];
@@ -21,6 +21,20 @@ Array.prototype.newMap = function (func) {
 
 let d = arr.newMap((x) => x + 1);
 console.log(d);
+
+// Array.prototype.myMap = function(callback, thisArgs){
+//   let outArray = [], thisContext;
+
+//   if(arguments.length > 1){
+//     thisContext = thisArgs;
+//   }
+//   for (let index = 0; index < this.length; index++) {
+//     outArray.push(callback.call(thisContext,this[idex], index, this));
+    
+//   }
+//   return outArray;
+// };
+
 
 // b) use map for array 
 var newReleases = [
@@ -319,6 +333,7 @@ function resultRobot(op1, op2) {
 resultRobot.prototype = new Robot();
 let kk = new resultRobot(0, 1);
 
+
 //б
 let voltron = (resultRobot.prototype = new Robot("voltron"));
 resultRobot.call(voltron, 1, 2);
@@ -345,13 +360,16 @@ let lk = new resultRobot();
 // 3
 // а
 let btnFive = document.getElementById("fiveSeconds")
+let time;
 let btnFiveSeconds = () => {
-	setInterval(() => {
+  clearTimeout(time);
+	time = setInterval(() => {
 		console.log('hello word');
 	}, 5000)
   
 }
 btnFive.addEventListener("click", btnFiveSeconds);
+
 
 
 
